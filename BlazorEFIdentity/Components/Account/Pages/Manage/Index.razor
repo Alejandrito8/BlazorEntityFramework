@@ -1,0 +1,190 @@
+﻿@page "/Account/Manage"
+
+@using System.ComponentModel.DataAnnotations
+@using Microsoft.AspNetCore.Identity
+@using BlazorEFIdentity.Data
+
+@inject UserManager<ApplicationUser> UserManager
+@inject SignInManager<ApplicationUser> SignInManager
+@inject IdentityUserAccessor UserAccessor
+@inject IdentityRedirectManager RedirectManager
+
+<PageTitle>Profile</PageTitle>
+
+<h3>Profile</h3>
+<StatusMessage />
+
+<div class="row">
+    <div class="col-md-6">
+        <EditForm Model="Input" FormName="profile" OnValidSubmit="OnValidSubmitAsync" method="post">
+            <DataAnnotationsValidator />
+            <ValidationSummary class="text-danger" role="alert" />
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="Input.Email" class="form-control" placeholder="Enter your Email." />
+                <label for="email" class="form-label">Email</label>
+                <ValidationMessage For="() => Input.Email" class="text-danger" />
+            </div> 
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="Input.Handle" class="form-control" placeholder="Enter your Handle." />
+                <label for="handle" class="form-label">Handle</label>
+                <ValidationMessage For="() => Input.Handle" class="text-danger" />
+            </div>  
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="Input.PersonId" class="form-control" placeholder="Enter your PersonId number." />
+                <label for="personId" class="form-label">PersonId</label>
+                <ValidationMessage For="() => Input.PersonId" class="text-danger" />
+            </div>  
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="Input.PhoneNumber" class="form-control" placeholder="Enter your Phone Number." />
+                <label for="phone-number" class="form-label">Phone number</label>
+                <ValidationMessage For="() => Input.PhoneNumber" class="text-danger" />
+            </div>     
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="Input.Adress" class="form-control" placeholder="Enter your Address." />
+                <label for="adress" class="form-label">Address</label>
+                <ValidationMessage For="() => Input.Adress" class="text-danger" />
+            </div>     
+
+            <button type="submit" class="w-100 btn btn-lg btn-primary">Save</button>
+        </EditForm>
+    </div>
+</div>
+
+@code {
+    private ApplicationUser user = default!;
+    private string? email;
+    private string? phoneNumber;
+    private string? adress;    
+    private string? handle;
+    private string? personId;
+
+    [CascadingParameter]
+    private HttpContext HttpContext { get; set; } = default!;
+
+    [SupplyParameterFromForm]
+    private InputModel Input { get; set; } = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Hämta användaren från UserAccessor
+        user = await UserAccessor.GetRequiredUserAsync(HttpContext);
+        
+        // Hämta användarens nuvarande data
+        handle = await UserManager.GetUserNameAsync(user);
+        email = user.Email;
+        phoneNumber = await UserManager.GetPhoneNumberAsync(user);
+        adress = user.Adress;
+        personId = user.PersonId;
+
+        // Sätt de inledande värdena för formulärfält
+        Input.PhoneNumber ??= phoneNumber;
+        Input.Adress ??= adress;
+        Input.Email ??= email;
+        Input.Handle ??= handle;
+        Input.PersonId ??= personId;
+    }
+
+    private async Task OnValidSubmitAsync()
+    {
+        bool hasChanges = false;
+
+        // Uppdatera Phone Number
+        if (Input.PhoneNumber != phoneNumber)
+        {
+            var setPhoneResult = await UserManager.SetPhoneNumberAsync(user, Input.PhoneNumber);
+            if (!setPhoneResult.Succeeded)
+            {
+                RedirectManager.RedirectToCurrentPageWithStatus("Error: Failed to set phone number.", HttpContext);
+                return;
+            }
+            hasChanges = true;
+        }
+
+        // Uppdatera Address
+        if (Input.Adress != adress)
+        {
+            user.Adress = Input.Adress;
+            var updateResult = await UserManager.UpdateAsync(user);
+            if (!updateResult.Succeeded)
+            {
+                RedirectManager.RedirectToCurrentPageWithStatus("Error: Failed to update address.", HttpContext);
+                return;
+            }
+            hasChanges = true;
+        }
+
+        // Uppdatera Email
+        if (Input.Email != email)
+        {
+            user.Email = Input.Email;
+            var emailResult = await UserManager.UpdateAsync(user);
+            if (!emailResult.Succeeded)
+            {
+                RedirectManager.RedirectToCurrentPageWithStatus("Error: Failed to update email.", HttpContext);
+                return;
+            }
+            hasChanges = true;
+        }
+
+        // Uppdatera Handle (Användarnamn)
+        if (Input.Handle != handle)
+        {
+            var setUserNameResult = await UserManager.SetUserNameAsync(user, Input.Handle);
+            if (!setUserNameResult.Succeeded)
+            {
+                RedirectManager.RedirectToCurrentPageWithStatus("Error: Failed to update username.", HttpContext);
+                return;
+            }
+            hasChanges = true;
+        }
+
+        // Uppdatera PersonId
+        if (Input.PersonId != personId)
+        {
+            user.PersonId = Input.PersonId;
+            var updatePersonIdResult = await UserManager.UpdateAsync(user);
+            if (!updatePersonIdResult.Succeeded)
+            {
+                RedirectManager.RedirectToCurrentPageWithStatus("Error: Failed to update person ID.", HttpContext);
+                return;
+            }
+            hasChanges = true;
+        }
+
+        // Om det finns några ändringar, uppdatera användarens session
+        if (hasChanges)
+        {
+            await SignInManager.RefreshSignInAsync(user);
+            RedirectManager.RedirectToCurrentPageWithStatus("Your profile has been updated", HttpContext);
+        }
+    }
+
+    private sealed class InputModel
+    {
+        [EmailAddress]
+        [Required]
+        [Display(Name = "Email")]
+        public string? Email { get; set; }
+
+        [Required]
+        [Display(Name = "Handle")]
+        public string? Handle { get; set; }
+
+        [Required]
+        [Display(Name = "PersonId")]
+        public string? PersonId { get; set; }
+
+        [Phone]
+        [Display(Name = "Phone number")]
+        public string? PhoneNumber { get; set; }
+
+        [Required]
+        [Display(Name = "Adress")]
+        public string? Adress { get; set; }
+    }
+}

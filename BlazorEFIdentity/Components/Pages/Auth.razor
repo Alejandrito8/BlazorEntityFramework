@@ -1,0 +1,32 @@
+﻿@page "/auth"
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> userManager
+@inject AuthenticationStateProvider authenticationStateProvider
+@using Microsoft.AspNetCore.Authorization
+
+@attribute [Authorize]
+
+<PageTitle>Auth</PageTitle>
+
+<h1>You are authenticated</h1>
+
+<AuthorizeView>
+    Hello @context.User.Identity?.Name!
+    <p>
+        Is handle @user.Handle correct?
+    </p>
+</AuthorizeView>
+<AuthorizeView Roles="Admin">
+    Hello @context.User.Identity?.Name! You can only view this since you are an Admin
+</AuthorizeView>
+<AuthorizeView Roles="User">
+    Hello @context.User.Identity?.Name! You can only view this since you are an User
+</AuthorizeView>
+@code {
+    private ApplicationUser user;
+
+    protected override async Task OnInitializedAsync() {
+        var authState = await authenticationStateProvider.GetAuthenticationStateAsync();
+        user = await userManager.GetUserAsync(authState.User);
+    }
+}
