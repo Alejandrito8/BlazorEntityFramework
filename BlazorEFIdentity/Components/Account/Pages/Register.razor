@@ -94,33 +94,23 @@
 
     public async Task RegisterUser(EditContext editContext)
     {
-        var user = CreateUser();
+         var user = CreateUser();
 
-        // Sätt Handle om det inte är null
-        if (Input.Handle is not null)
-        {
-            user.Handle = Input.Handle;
+            user.UserName = Input.Handle;
+            user.Email = Input.Email;
+            user.NormalizedUserName = Input.Handle.ToUpper();
+            user.NormalizedEmail = Input.Email.ToUpper();
 
-            // Kontrollera om email redan är tagen
-            var existingUser = await UserManager.FindByEmailAsync(Input.Email);
-            if (existingUser != null)
-            {
-                identityErrors = new[] { new IdentityError { Description = "Email is already taken" } };
-                return;
-            }
-        }
+Console.WriteLine($"Registering User - Email: {user.Email}, UserName: {user.UserName}, NormalizedUserName: {user.NormalizedUserName}");
 
-        // Sätt övriga användaruppgifter
         user.PersonId = Input.PersonId;
         user.Adress = Input.Adress;
         user.PhoneNumber = Input.PhoneNumber;
+        user.UserName = Input.Handle;
+        user.Email = Input.Email;
+        user.NormalizedUserName = Input.Handle.ToUpper();
+        user.NormalizedEmail = Input.Email.ToUpper();
 
-        // Set användarnamn och email
-        await UserStore.SetUserNameAsync(user, Input.Handle, CancellationToken.None);
-        var emailStore = GetEmailStore();
-        await emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
-
-        // Skapa användaren med lösenord
         var result = await UserManager.CreateAsync(user, Input.Password);
 
         if (!result.Succeeded)

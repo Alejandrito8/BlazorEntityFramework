@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Components",
+    "\\Components\\Account",
+    "\\Components\\Account\\Pages",
+    "\\Components\\Account\\Pages\\Manage",
+    "\\Components\\Layout",
+    "\\Components\\Pages"
+  ],
+  "SelectedNode": "\\Program.cs",
+  "PreviewInSolutionExplorer": false
+}

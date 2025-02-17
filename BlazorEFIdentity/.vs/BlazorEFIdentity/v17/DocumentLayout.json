@@ -1,53 +1,70 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Repon\\OPF_R - Newton\\Demo\\NewEF\\BlazorEFIdentity\\",
+  "WorkspaceRootPath": "C:\\Users\\aleks\\source\\repos\\Development\\Newton Projects\\OOP\\OPF\\BlazorEntityFramework\\BlazorEFIdentity\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3076BEF8-E325-40D9-B902-BB92D4A637BE}|BlazorEFIdentity.csproj|c:\\repon\\opf_r - newton\\demo\\newef\\blazorefidentity\\components\\pages\\auth.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3076BEF8-E325-40D9-B902-BB92D4A637BE}|BlazorEFIdentity.csproj|solutionrelative:components\\pages\\auth.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\aleks\\source\\repos\\Development\\Newton Projects\\OOP\\OPF\\BlazorEntityFramework\\BlazorEFIdentity\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3076BEF8-E325-40D9-B902-BB92D4A637BE}|BlazorEFIdentity.csproj|c:\\repon\\opf_r - newton\\demo\\newef\\blazorefidentity\\data\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3076BEF8-E325-40D9-B902-BB92D4A637BE}|BlazorEFIdentity.csproj|solutionrelative:data\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\aleks\\source\\repos\\Development\\Newton Projects\\OOP\\OPF\\BlazorEntityFramework\\BlazorEFIdentity\\Components\\Account\\Pages\\Manage\\Index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Components\\Account\\Pages\\Manage\\Index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3076BEF8-E325-40D9-B902-BB92D4A637BE}|BlazorEFIdentity.csproj|c:\\repon\\opf_r - newton\\demo\\newef\\blazorefidentity\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3076BEF8-E325-40D9-B902-BB92D4A637BE}|BlazorEFIdentity.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\aleks\\source\\repos\\Development\\Newton Projects\\OOP\\OPF\\BlazorEntityFramework\\BlazorEFIdentity\\Components\\Pages\\Auth.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Components\\Pages\\Auth.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3076BEF8-E325-40D9-B902-BB92D4A637BE}|BlazorEFIdentity.csproj|c:\\repon\\opf_r - newton\\demo\\newef\\blazorefidentity\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3076BEF8-E325-40D9-B902-BB92D4A637BE}|BlazorEFIdentity.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\aleks\\source\\repos\\Development\\Newton Projects\\OOP\\OPF\\BlazorEntityFramework\\BlazorEFIdentity\\Data\\ApplicationDbContext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Data\\ApplicationDbContext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\aleks\\source\\repos\\Development\\Newton Projects\\OOP\\OPF\\BlazorEntityFramework\\BlazorEFIdentity\\Data\\ApplicationUser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Data\\ApplicationUser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
-      "VerticalTabListWidth": 256,
+      "VerticalTabListWidth": 100,
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
+              "Title": "Index.razor",
+              "DocumentMoniker": "C:\\Users\\aleks\\source\\repos\\Development\\Newton Projects\\OOP\\OPF\\BlazorEntityFramework\\BlazorEFIdentity\\Components\\Account\\Pages\\Manage\\Index.razor",
+              "RelativeDocumentMoniker": "Components\\Account\\Pages\\Manage\\Index.razor",
+              "ToolTip": "C:\\Users\\aleks\\source\\repos\\Development\\Newton Projects\\OOP\\OPF\\BlazorEntityFramework\\BlazorEFIdentity\\Components\\Account\\Pages\\Manage\\Index.razor",
+              "RelativeToolTip": "Components\\Account\\Pages\\Manage\\Index.razor",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAAAYAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-17T09:15:21.538Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Auth.razor",
-              "DocumentMoniker": "C:\\Repon\\OPF_R - Newton\\Demo\\NewEF\\BlazorEFIdentity\\Components\\Pages\\Auth.razor",
+              "DocumentMoniker": "C:\\Users\\aleks\\source\\repos\\Development\\Newton Projects\\OOP\\OPF\\BlazorEntityFramework\\BlazorEFIdentity\\Components\\Pages\\Auth.razor",
               "RelativeDocumentMoniker": "Components\\Pages\\Auth.razor",
-              "ToolTip": "C:\\Repon\\OPF_R - Newton\\Demo\\NewEF\\BlazorEFIdentity\\Components\\Pages\\Auth.razor",
+              "ToolTip": "C:\\Users\\aleks\\source\\repos\\Development\\Newton Projects\\OOP\\OPF\\BlazorEntityFramework\\BlazorEFIdentity\\Components\\Pages\\Auth.razor",
               "RelativeToolTip": "Components\\Pages\\Auth.razor",
-              "ViewState": "AgIAABgAAAAAAAAAAAAkwBoAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-02-07T08:50:18.454Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "C:\\Repon\\OPF_R - Newton\\Demo\\NewEF\\BlazorEFIdentity\\Data\\ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\aleks\\source\\repos\\Development\\Newton Projects\\OOP\\OPF\\BlazorEntityFramework\\BlazorEFIdentity\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
-              "ToolTip": "C:\\Repon\\OPF_R - Newton\\Demo\\NewEF\\BlazorEFIdentity\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\aleks\\source\\repos\\Development\\Newton Projects\\OOP\\OPF\\BlazorEntityFramework\\BlazorEFIdentity\\Data\\ApplicationDbContext.cs",
               "RelativeToolTip": "Data\\ApplicationDbContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -55,11 +72,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "ApplicationUser.cs",
-              "DocumentMoniker": "C:\\Repon\\OPF_R - Newton\\Demo\\NewEF\\BlazorEFIdentity\\Data\\ApplicationUser.cs",
+              "DocumentMoniker": "C:\\Users\\aleks\\source\\repos\\Development\\Newton Projects\\OOP\\OPF\\BlazorEntityFramework\\BlazorEFIdentity\\Data\\ApplicationUser.cs",
               "RelativeDocumentMoniker": "Data\\ApplicationUser.cs",
-              "ToolTip": "C:\\Repon\\OPF_R - Newton\\Demo\\NewEF\\BlazorEFIdentity\\Data\\ApplicationUser.cs",
+              "ToolTip": "C:\\Users\\aleks\\source\\repos\\Development\\Newton Projects\\OOP\\OPF\\BlazorEntityFramework\\BlazorEFIdentity\\Data\\ApplicationUser.cs",
               "RelativeToolTip": "Data\\ApplicationUser.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -67,15 +84,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Repon\\OPF_R - Newton\\Demo\\NewEF\\BlazorEFIdentity\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\aleks\\source\\repos\\Development\\Newton Projects\\OOP\\OPF\\BlazorEntityFramework\\BlazorEFIdentity\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Repon\\OPF_R - Newton\\Demo\\NewEF\\BlazorEFIdentity\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAQwCkAAABBAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\aleks\\source\\repos\\Development\\Newton Projects\\OOP\\OPF\\BlazorEntityFramework\\BlazorEFIdentity\\Program.cs*",
+              "RelativeToolTip": "Program.cs*",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAAAEoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-07T08:34:22.177Z"
+              "WhenOpened": "2025-02-07T08:34:22.177Z",
+              "EditorCaption": ""
             }
           ]
         }

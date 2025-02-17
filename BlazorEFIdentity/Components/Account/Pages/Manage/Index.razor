@@ -71,17 +71,13 @@
 
     protected override async Task OnInitializedAsync()
     {
-        // Hämta användaren från UserAccessor
         user = await UserAccessor.GetRequiredUserAsync(HttpContext);
-        
-        // Hämta användarens nuvarande data
-        handle = await UserManager.GetUserNameAsync(user);
+        handle = user.Handle ?? user.UserName; 
         email = user.Email;
         phoneNumber = await UserManager.GetPhoneNumberAsync(user);
         adress = user.Adress;
         personId = user.PersonId;
 
-        // Sätt de inledande värdena för formulärfält
         Input.PhoneNumber ??= phoneNumber;
         Input.Adress ??= adress;
         Input.Email ??= email;
@@ -93,7 +89,32 @@
     {
         bool hasChanges = false;
 
-        // Uppdatera Phone Number
+        // 🔹 Säkerställ att UserName uppdateras när Handle ändras
+        if (Input.Handle != handle)
+        {
+            user.Handle = Input.Handle;
+            user.UserName = Input.Handle;
+            var updateHandleResult = await UserManager.UpdateAsync(user);
+            if (!updateHandleResult.Succeeded)
+            {
+                RedirectManager.RedirectToCurrentPageWithStatus("Error: Failed to update handle.", HttpContext);
+                return;
+            }
+            hasChanges = true;
+        }
+
+         if (Input.Email != email)
+        {
+            user.Email = Input.Email;
+            var emailResult = await UserManager.UpdateAsync(user);
+            if (!emailResult.Succeeded)
+            {
+                RedirectManager.RedirectToCurrentPageWithStatus("Error: Failed to update email.", HttpContext);
+                return;
+            }
+            hasChanges = true;
+        }
+
         if (Input.PhoneNumber != phoneNumber)
         {
             var setPhoneResult = await UserManager.SetPhoneNumberAsync(user, Input.PhoneNumber);
@@ -105,7 +126,6 @@
             hasChanges = true;
         }
 
-        // Uppdatera Address
         if (Input.Adress != adress)
         {
             user.Adress = Input.Adress;
@@ -118,32 +138,6 @@
             hasChanges = true;
         }
 
-        // Uppdatera Email
-        if (Input.Email != email)
-        {
-            user.Email = Input.Email;
-            var emailResult = await UserManager.UpdateAsync(user);
-            if (!emailResult.Succeeded)
-            {
-                RedirectManager.RedirectToCurrentPageWithStatus("Error: Failed to update email.", HttpContext);
-                return;
-            }
-            hasChanges = true;
-        }
-
-        // Uppdatera Handle (Användarnamn)
-        if (Input.Handle != handle)
-        {
-            var setUserNameResult = await UserManager.SetUserNameAsync(user, Input.Handle);
-            if (!setUserNameResult.Succeeded)
-            {
-                RedirectManager.RedirectToCurrentPageWithStatus("Error: Failed to update username.", HttpContext);
-                return;
-            }
-            hasChanges = true;
-        }
-
-        // Uppdatera PersonId
         if (Input.PersonId != personId)
         {
             user.PersonId = Input.PersonId;
@@ -156,7 +150,6 @@
             hasChanges = true;
         }
 
-        // Om det finns några ändringar, uppdatera användarens session
         if (hasChanges)
         {
             await SignInManager.RefreshSignInAsync(user);
@@ -168,23 +161,18 @@
     {
         [EmailAddress]
         [Required]
-        [Display(Name = "Email")]
         public string? Email { get; set; }
 
         [Required]
-        [Display(Name = "Handle")]
         public string? Handle { get; set; }
 
         [Required]
-        [Display(Name = "PersonId")]
         public string? PersonId { get; set; }
 
         [Phone]
-        [Display(Name = "Phone number")]
         public string? PhoneNumber { get; set; }
 
         [Required]
-        [Display(Name = "Adress")]
         public string? Adress { get; set; }
     }
 }

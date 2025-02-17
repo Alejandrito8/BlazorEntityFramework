@@ -352,3 +352,4 @@ C:\Users\aleks\source\repos\Development\Newton Projects\OOP\OPF\BlazorEntityFram
 C:\Users\aleks\source\repos\Development\Newton Projects\OOP\OPF\BlazorEntityFramework\BlazorEFIdentity\obj\Debug\net8.0\BlazorEFIdentity.pdb
 C:\Users\aleks\source\repos\Development\Newton Projects\OOP\OPF\BlazorEntityFramework\BlazorEFIdentity\obj\Debug\net8.0\BlazorEFIdentity.genruntimeconfig.cache
 C:\Users\aleks\source\repos\Development\Newton Projects\OOP\OPF\BlazorEntityFramework\BlazorEFIdentity\obj\Debug\net8.0\ref\BlazorEFIdentity.dll
+C:\Users\aleks\source\repos\Development\Newton Projects\OOP\OPF\BlazorEntityFramework\BlazorEFIdentity\obj\Debug\net8.0\BlazorEFIdentity.sourcelink.json
