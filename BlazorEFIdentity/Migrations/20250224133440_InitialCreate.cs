@@ -163,10 +163,11 @@ namespace BlazorEFIdentity.Migrations
                 name: "BankAccount",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "TEXT", nullable: false),
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     AccountNumber = table.Column<string>(type: "TEXT", nullable: false),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
-                    Balance = table.Column<int>(type: "INTEGER", nullable: false),
+                    Balance = table.Column<decimal>(type: "TEXT", nullable: false),
                     Type = table.Column<string>(type: "TEXT", nullable: false),
                     CardNumber = table.Column<int>(type: "INTEGER", nullable: true),
                     Active = table.Column<bool>(type: "INTEGER", nullable: false),
@@ -195,15 +196,14 @@ namespace BlazorEFIdentity.Migrations
                     ReservedBalance = table.Column<decimal>(type: "TEXT", nullable: false),
                     TransactionMessage = table.Column<string>(type: "TEXT", nullable: false),
                     TransactionNumber = table.Column<string>(type: "TEXT", nullable: false),
-                    FromAccountId = table.Column<int>(type: "INTEGER", nullable: false),
-                    FromAcccountId = table.Column<string>(type: "TEXT", nullable: false)
+                    FromAccountId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Transaction", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Transaction_BankAccount_FromAcccountId",
-                        column: x => x.FromAcccountId,
+                        name: "FK_Transaction_BankAccount_FromAccountId",
+                        column: x => x.FromAccountId,
                         principalTable: "BankAccount",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -252,9 +252,9 @@ namespace BlazorEFIdentity.Migrations
                 column: "ApplicationUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Transaction_FromAcccountId",
+                name: "IX_Transaction_FromAccountId",
                 table: "Transaction",
-                column: "FromAcccountId");
+                column: "FromAccountId");
         }
 
         /// <inheritdoc />

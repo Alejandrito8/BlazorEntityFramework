@@ -4,6 +4,7 @@
 @using Microsoft.AspNetCore.Authentication
 @using Microsoft.AspNetCore.Identity
 @using BlazorEFIdentity.Data
+@inject UserManager<ApplicationUser> UserManager
 
 @inject SignInManager<ApplicationUser> SignInManager
 @inject ILogger<Login> Logger
@@ -23,12 +24,14 @@
                 <hr />
                 <ValidationSummary class="text-danger" role="alert" />
                 <div class="form-floating mb-3">
-                    <InputText @bind-Value="Input.Email" class="form-control" autocomplete="email" aria-required="true" placeholder="name@example.com" />
+                    <InputText @bind-Value="Input.Email" class="form-control" autocomplete="email" aria-required="true"
+                        placeholder="name@example.com" />
                     <label for="email" class="form-label">Email</label>
                     <ValidationMessage For="() => Input.Email" class="text-danger" />
                 </div>
                 <div class="form-floating mb-3">
-                    <InputText type="password" @bind-Value="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" />
+                    <InputText type="password" @bind-Value="Input.Password" class="form-control"
+                        autocomplete="current-password" aria-required="true" placeholder="password" />
                     <label for="password" class="form-label">Password</label>
                     <ValidationMessage For="() => Input.Password" class="text-danger" />
                 </div>
@@ -46,7 +49,9 @@
                         <a href="Account/ForgotPassword">Forgot your password?</a>
                     </p>
                     <p>
-                        <a href="@(NavigationManager.GetUriWithQueryParameters("Account/Register", new Dictionary<string, object?> { ["ReturnUrl"] = ReturnUrl }))">Register as a new user</a>
+                        <a
+                            href="@(NavigationManager.GetUriWithQueryParameters("Account/Register", new Dictionary<string, object?> { ["ReturnUrl"] = ReturnUrl }))">Register
+                            as a new user</a>
                     </p>
                 </div>
             </EditForm>
@@ -70,14 +75,16 @@
     {
         if (HttpMethods.IsGet(HttpContext.Request.Method))
         {
- 
+
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
         }
     }
 
     public async Task LoginUser()
     {
-        var result = await SignInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+        var user = await UserManager.FindByEmailAsync(Input.Email);
+        var result = await SignInManager.PasswordSignInAsync(user.UserName, Input.Password, Input.RememberMe, lockoutOnFailure:
+        false);
         if (result.Succeeded)
         {
             Logger.LogInformation("User logged in.");
@@ -86,8 +93,8 @@
         else if (result.RequiresTwoFactor)
         {
             RedirectManager.RedirectTo(
-                "Account/LoginWith2fa",
-                new() { ["returnUrl"] = ReturnUrl, ["rememberMe"] = Input.RememberMe });
+            "Account/LoginWith2fa",
+            new() { ["returnUrl"] = ReturnUrl, ["rememberMe"] = Input.RememberMe });
         }
         else if (result.IsLockedOut)
         {
@@ -98,6 +105,7 @@
         {
             errorMessage = "Error: Invalid login attempt.";
         }
+        
     }
 
     private sealed class InputModel
@@ -113,5 +121,5 @@
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
     }
-    
+
 }

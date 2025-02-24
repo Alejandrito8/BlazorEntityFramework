@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\aleks\\source\\repos\\Development\\Newton Projects\\OOP\\OPF\\BlazorEntityFramework\\BlazorEFIdentity\\BlazorEFIdentity.csproj": {}
+    "c:\\Users\\aleks\\source\\repos\\Development\\Newton Projects\\OOP\\OPF\\BlazorEntityFramework\\BlazorEFIdentity\\BlazorEFIdentity.csproj": {}
   },
   "projects": {
-    "C:\\Users\\aleks\\source\\repos\\Development\\Newton Projects\\OOP\\OPF\\BlazorEntityFramework\\BlazorEFIdentity\\BlazorEFIdentity.csproj": {
+    "c:\\Users\\aleks\\source\\repos\\Development\\Newton Projects\\OOP\\OPF\\BlazorEntityFramework\\BlazorEFIdentity\\BlazorEFIdentity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\aleks\\source\\repos\\Development\\Newton Projects\\OOP\\OPF\\BlazorEntityFramework\\BlazorEFIdentity\\BlazorEFIdentity.csproj",
+        "projectUniqueName": "c:\\Users\\aleks\\source\\repos\\Development\\Newton Projects\\OOP\\OPF\\BlazorEntityFramework\\BlazorEFIdentity\\BlazorEFIdentity.csproj",
         "projectName": "BlazorEFIdentity",
-        "projectPath": "C:\\Users\\aleks\\source\\repos\\Development\\Newton Projects\\OOP\\OPF\\BlazorEntityFramework\\BlazorEFIdentity\\BlazorEFIdentity.csproj",
+        "projectPath": "c:\\Users\\aleks\\source\\repos\\Development\\Newton Projects\\OOP\\OPF\\BlazorEntityFramework\\BlazorEFIdentity\\BlazorEFIdentity.csproj",
         "packagesPath": "C:\\Users\\aleks\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\aleks\\source\\repos\\Development\\Newton Projects\\OOP\\OPF\\BlazorEntityFramework\\BlazorEFIdentity\\obj\\",
+        "outputPath": "c:\\Users\\aleks\\source\\repos\\Development\\Newton Projects\\OOP\\OPF\\BlazorEntityFramework\\BlazorEFIdentity\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

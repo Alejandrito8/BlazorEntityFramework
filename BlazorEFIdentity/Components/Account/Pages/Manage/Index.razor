@@ -24,31 +24,31 @@
                 <InputText @bind-Value="Input.Email" class="form-control" placeholder="Enter your Email." />
                 <label for="email" class="form-label">Email</label>
                 <ValidationMessage For="() => Input.Email" class="text-danger" />
-            </div> 
+            </div>
 
             <div class="form-floating mb-3">
-                <InputText @bind-Value="Input.Handle" class="form-control" placeholder="Enter your Handle." />
-                <label for="handle" class="form-label">Handle</label>
+                <InputText @bind-Value="Input.Handle" class="form-control" placeholder="Enter your Username." />
+                <label for="handle" class="form-label">Username</label>
                 <ValidationMessage For="() => Input.Handle" class="text-danger" />
-            </div>  
-
+            </div>
             <div class="form-floating mb-3">
-                <InputText @bind-Value="Input.PersonId" class="form-control" placeholder="Enter your PersonId number." />
-                <label for="personId" class="form-label">PersonId</label>
+                <InputText @bind-Value="Input.PersonId" class="form-control" placeholder="Enter your Personal number."
+                    disabled="@(Input.PersonId is not null && Input.PersonId != string.Empty)" />
+                <label for="personId" class="form-label">Personal number</label>
                 <ValidationMessage For="() => Input.PersonId" class="text-danger" />
-            </div>  
-
+            </div>
             <div class="form-floating mb-3">
-                <InputText @bind-Value="Input.PhoneNumber" class="form-control" placeholder="Enter your Phone Number." />
+                <InputText @bind-Value="Input.PhoneNumber" class="form-control"
+                    placeholder="Enter your Phone Number." />
                 <label for="phone-number" class="form-label">Phone number</label>
                 <ValidationMessage For="() => Input.PhoneNumber" class="text-danger" />
-            </div>     
+            </div>
 
             <div class="form-floating mb-3">
                 <InputText @bind-Value="Input.Adress" class="form-control" placeholder="Enter your Address." />
                 <label for="adress" class="form-label">Address</label>
                 <ValidationMessage For="() => Input.Adress" class="text-danger" />
-            </div>     
+            </div>
 
             <button type="submit" class="w-100 btn btn-lg btn-primary">Save</button>
         </EditForm>
@@ -59,7 +59,7 @@
     private ApplicationUser user = default!;
     private string? email;
     private string? phoneNumber;
-    private string? adress;    
+    private string? adress;
     private string? handle;
     private string? personId;
 
@@ -72,7 +72,7 @@
     protected override async Task OnInitializedAsync()
     {
         user = await UserAccessor.GetRequiredUserAsync(HttpContext);
-        handle = user.Handle ?? user.UserName; 
+        handle = user.Handle ?? user.UserName;
         email = user.Email;
         phoneNumber = await UserManager.GetPhoneNumberAsync(user);
         adress = user.Adress;
@@ -88,8 +88,6 @@
     private async Task OnValidSubmitAsync()
     {
         bool hasChanges = false;
-
-        // 🔹 Säkerställ att UserName uppdateras när Handle ändras
         if (Input.Handle != handle)
         {
             user.Handle = Input.Handle;
@@ -103,7 +101,7 @@
             hasChanges = true;
         }
 
-         if (Input.Email != email)
+        if (Input.Email != email)
         {
             user.Email = Input.Email;
             var emailResult = await UserManager.UpdateAsync(user);

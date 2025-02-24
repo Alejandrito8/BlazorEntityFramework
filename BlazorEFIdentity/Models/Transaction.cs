@@ -1,10 +1,9 @@
 using System;
 
-namespace BlazorEFIdentity.Models;
-
+namespace BlazorEFIdentity.Models
+{
     public class Transaction
     {
-
         public int Id { get; set; }
         public DateTime DateTime { get; set; } = DateTime.UtcNow;
 
@@ -20,7 +19,7 @@ namespace BlazorEFIdentity.Models;
 
         public int FromAccountId { get; set; }
 
-        public BankAccount FromAcccount { get; set; }
-
+        public BankAccount FromAccount { get; set; }
+    }
     }
 

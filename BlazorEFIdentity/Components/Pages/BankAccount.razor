@@ -1,0 +1,115 @@
+﻿@page "/Bank"
+@using BlazorEFIdentity.Data
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Authorization
+
+@rendermode InteractiveServer
+@inject BankServices BankService
+@inject UserManager<ApplicationUser> UserManager
+@inject NavigationManager Navigation
+@attribute [Authorize]
+
+<h3>Mina Bankkonton</h3>
+
+@if (accounts == null)
+{
+    <p>Laddar dina bankkonton...</p>
+}
+else if (!accounts.Any())
+{
+    <p>Du har inga bankkonton ännu.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Kontonummer</th>
+                <th>Namn</th>
+                <th>Saldo</th>
+                <th>Typ</th>
+                <th>Åtgärder</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var account in accounts)
+        {
+            @* <tr class="@((selectedAccount != null && selectedAccount.Id == account.Id) ? "table-primary" : "")">
+                <td>@account.AccountNumber</td>
+                <td>@account.Name</td>
+                <td>@account.Balance.ToString("C")</td>
+                <td>@account.Type</td>
+                <td>
+                    <button class="btn btn-info btn-sm" @onclick="() => SelectAccount(account.AccountNumber)">Visa detaljer</button>
+                </td>
+            </tr> *@
+        }
+        </tbody>
+    </table>
+    <p>@accounts[1].</p>
+}
+
+@if (selectedAccount != null)
+{
+    @* <h4>Kontodetaljer</h4>
+    <p><strong>Kontonummer:</strong> @selectedAccount.AccountNumber</p>
+    <p><strong>Namn:</strong> @selectedAccount.Name</p>
+    <p><strong>Saldo:</strong> @selectedAccount.Balance.ToString("C")</p>
+    <p><strong>Typ:</strong> @selectedAccount.Type</p> *@
+}
+
+<button class="btn btn-success" @onclick="CreateBankAccount">Skapa nytt konto</button>
+
+@code {
+    private List<BankAccount> accounts = new();
+    private BankAccount selectedAccount = new();
+    private ApplicationUser currentUser = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        @* currentUser = await UserManager.GetUserAsync(UserManager.Users.First()); *@
+        if (currentUser != null)
+        {
+            await LoadAccounts();
+        }
+    }
+
+    private async Task LoadAccounts()
+    {
+        if (currentUser != null)
+        {
+            var allAccounts = await BankService.GetAccountsAsync();
+            @* accounts = allAccounts.Where(a => a.UserId == currentUser.Id).ToList(); *@
+            selectedAccount = null;
+            StateHasChanged();
+        }
+    }
+
+    private async Task SelectAccount(string accountNumber)
+    {
+        @* selectedAccount = accounts.FirstOrDefault(a => a.AccountNumber == accountNumber); *@
+    }
+
+    private async Task CreateBankAccount()
+    {
+        if (currentUser != null)
+        {
+            var newAccount = new BlazorEFIdentity.Models.BankAccount
+            {
+                AccountNumber = Guid.NewGuid().ToString().Substring(0, 10),
+                Name = "Mitt nya konto",
+                Balance = 0,
+                Type = "Sparkonto",
+                Active = true,
+                UserId = currentUser.Id
+            };
+
+            bool success = await BankService.CreateAccountForUserAsync(newAccount, currentUser.Id);
+            if (success)
+            {
+                await LoadAccounts();
+            }
+        }
+    }
+}
+

@@ -12,9 +12,6 @@
 
 <AuthorizeView>
     Hello @context.User.Identity?.Name!
-    <p>
-        Is handle @user.Handle correct?
-    </p>
 </AuthorizeView>
 <AuthorizeView Roles="Admin">
     Hello @context.User.Identity?.Name! You can only view this since you are an Admin

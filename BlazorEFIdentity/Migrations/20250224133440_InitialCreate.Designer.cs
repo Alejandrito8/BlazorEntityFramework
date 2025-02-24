@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlazorEFIdentity.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250214155839_InitialCreate")]
+    [Migration("20250224133440_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -95,8 +95,9 @@ namespace BlazorEFIdentity.Migrations
 
             modelBuilder.Entity("BlazorEFIdentity.Models.BankAccount", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("AccountNumber")
                         .IsRequired()
@@ -108,8 +109,8 @@ namespace BlazorEFIdentity.Migrations
                     b.Property<string>("ApplicationUserId")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Balance")
-                        .HasColumnType("INTEGER");
+                    b.Property<decimal>("Balance")
+                        .HasColumnType("TEXT");
 
                     b.Property<int?>("CardNumber")
                         .HasColumnType("INTEGER");
@@ -146,10 +147,6 @@ namespace BlazorEFIdentity.Migrations
                     b.Property<DateTime>("DateTime")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("FromAcccountId")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<int>("FromAccountId")
                         .HasColumnType("INTEGER");
 
@@ -169,7 +166,7 @@ namespace BlazorEFIdentity.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("FromAcccountId");
+                    b.HasIndex("FromAccountId");
 
                     b.ToTable("Transaction");
                 });
@@ -311,13 +308,13 @@ namespace BlazorEFIdentity.Migrations
 
             modelBuilder.Entity("BlazorEFIdentity.Models.Transaction", b =>
                 {
-                    b.HasOne("BlazorEFIdentity.Models.BankAccount", "FromAcccount")
+                    b.HasOne("BlazorEFIdentity.Models.BankAccount", "FromAccount")
                         .WithMany("Transaction")
-                        .HasForeignKey("FromAcccountId")
+                        .HasForeignKey("FromAccountId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("FromAcccount");
+                    b.Navigation("FromAccount");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

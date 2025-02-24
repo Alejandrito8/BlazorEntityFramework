@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nNfSnoy3Rvs=",
+  "dgSpecHash": "vNqygxh0wAw=",
   "success": true,
-  "projectFilePath": "C:\\Users\\aleks\\source\\repos\\Development\\Newton Projects\\OOP\\OPF\\BlazorEntityFramework\\BlazorEFIdentity\\BlazorEFIdentity.csproj",
+  "projectFilePath": "c:\\Users\\aleks\\source\\repos\\Development\\Newton Projects\\OOP\\OPF\\BlazorEntityFramework\\BlazorEFIdentity\\BlazorEFIdentity.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\aleks\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\aleks\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
